@@ -1,51 +1,52 @@
 import React, {useContext} from 'react'
+import {ScrollView,StyleSheet,Image} from 'react-native'
 import  {NewsContext} from '../Context/Context'
-import { Image, View } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-
+import{ListItem, Card} from 'react-native-elements'
+import moment from 'moment'
 function HomeScreen() {
     const News = useContext(NewsContext)
 
     return (
-        <Container>
-            <View>
+        
+        <ScrollView style={styles.Container}>
+
             {
-              News.data.map((l,index)=>{
-                 return (
-                    <Card key={index} >
-                    <CardItem>
-                          <Text >{l.title}</Text>
-                    </CardItem>
-                    <CardItem cardBody>
-                      <Image source={{uri: l.media}} style={{height: 200, width: null, flex: 1}}/>
-                    </CardItem>
-                    <CardItem>
-                      <Text>{l.description}</Text>
-                      <Body>
-                        <Button transparent>
-                          <Icon active name="chatbubbles" />
-                          <Text>By: {l.dc}</Text>
-                        </Button>
-                      </Body>
-                      <Right>
-                        <Text>{l.pubDate}</Text>
-                      </Right>
-                    </CardItem>
-                  </Card>
+                News.data.articles && News.data.articles.map((l, index) => {
+                    return (
+                        <Card key={index}>
+                        <ListItem  bottomDivider>
+                            
+                            <ListItem.Content>
+                                <ListItem.Title>
+                                    {l.title}
+                                </ListItem.Title>
+                                <Card.Image source={{uri:l.urlToImage}} />
+                                
+                                <ListItem.Subtitle>
+                                    {l.source.name}         
+                                </ListItem.Subtitle>
+                                <ListItem.Subtitle>
+                                {moment(l.publishedAt).fromNow}
+                                </ListItem.Subtitle>
+                            </ListItem.Content>
+                            
+                            
+                           
+                        </ListItem>
+                        </Card>
+                    )
 
-                 )
-
-
-             })
-             
+                })
             }
 
-        </View>
-
-        </Container>
-
-        
+        </ScrollView>
     )
 }
 
 export default HomeScreen
+const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+    resizeMode: 'cover'
+    }
+})
