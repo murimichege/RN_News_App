@@ -2,8 +2,9 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import axios from 'axios'
-function FashionScreen() {
+import getTechNews from '../APIs/APIs'
+
+function TechScreen() {
     
      
     const [data, setData] = useState([])
@@ -11,13 +12,11 @@ function FashionScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get('https://api.nytimes.com/svc/topstories/v2/fashion.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')    
-            setData(response.data)
+            const fetchedData = await getTechNews()
+            setData(fetchedData.data)
             setisLoading(false)
         }
-        fetchData();
-            
-       
+        fetchData(); 
     },[])
 
     if(isLoading)
@@ -28,14 +27,12 @@ function FashionScreen() {
     return (
         
         <ScrollView style={styles.Container}>
-          
-
             {
               data.results.map((l, index) => {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url[0][0])}>
+                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -64,7 +61,8 @@ function FashionScreen() {
     )
 }
 
-export default FashionScreen
+export default TechScreen
+
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,

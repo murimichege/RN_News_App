@@ -3,8 +3,9 @@ import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
 import axios from 'axios'
+import getFashionNews from '../APIs/APIs'
 
-function PoliticsScreen() {
+function FashionScreen() {
     
      
     const [data, setData] = useState([])
@@ -12,8 +13,8 @@ function PoliticsScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get('https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')    
-            setData(response.data)
+            const fetchedData = await getFashionNews()
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData();
@@ -36,7 +37,7 @@ function PoliticsScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url[0][0])}>
+                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -65,7 +66,7 @@ function PoliticsScreen() {
     )
 }
 
-export default PoliticsScreen
+export default FashionScreen
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,

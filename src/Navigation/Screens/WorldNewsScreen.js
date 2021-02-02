@@ -2,8 +2,9 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
+import getWorldNews from '../APIs/APIs'
 import axios from 'axios'
-function HealthScreen() {
+function HomeScreen() {
     
      
     const [data, setData] = useState([])
@@ -11,13 +12,11 @@ function HealthScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get('https://api.nytimes.com/svc/topstories/v2/health.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')    
-            setData(response.data)
+            const fetchedData = await getWorldNews()
+            setData(fetchedData.data)
             setisLoading(false)
         }
-        fetchData();
-            
-       
+        fetchData();  
     },[])
 
     if(isLoading)
@@ -35,7 +34,7 @@ function HealthScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url[0][0])}>
+                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -64,7 +63,7 @@ function HealthScreen() {
     )
 }
 
-export default HealthScreen
+export default HomeScreen
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,

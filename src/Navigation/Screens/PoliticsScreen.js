@@ -2,22 +2,20 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import axios from 'axios'
-function HomeScreen() {
-    
+import getPoliticsNews from '../../APIs/APIs'
+
+function PoliticsScreen() {
      
     const [data, setData] = useState([])
     const [isLoading, setisLoading] = useState(true)
 
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')    
-            setData(response.data)
+            const fetchedData = await getPoliticsNews()
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData();
-            
-       
     },[])
 
     if(isLoading)
@@ -35,7 +33,7 @@ function HomeScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url[0][0])}>
+                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -64,7 +62,7 @@ function HomeScreen() {
     )
 }
 
-export default HomeScreen
+export default PoliticsScreen
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
