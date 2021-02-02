@@ -14,7 +14,7 @@ function FashionScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getFashionNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData();

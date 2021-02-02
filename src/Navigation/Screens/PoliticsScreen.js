@@ -12,7 +12,7 @@ function PoliticsScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getPoliticsNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData();

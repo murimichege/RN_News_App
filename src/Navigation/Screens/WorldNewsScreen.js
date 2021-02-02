@@ -13,7 +13,7 @@ function HomeScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getWorldNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData();  

@@ -13,7 +13,7 @@ function BusinessScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getBusinessNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData();

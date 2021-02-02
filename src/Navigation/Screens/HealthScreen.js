@@ -12,7 +12,7 @@ function HealthScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getHealthNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData();

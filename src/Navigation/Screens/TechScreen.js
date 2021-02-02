@@ -13,7 +13,7 @@ function TechScreen() {
     useEffect(() => {
         const fetchData = async() => {
             const fetchedData = await getTechNews()
-            setData(fetchedData.data)
+            setData(fetchedData)
             setisLoading(false)
         }
         fetchData(); 
