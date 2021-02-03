@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {HomeScreen} from '../Navigation/Screens/HomeScreen'  
+import HomeScreen from '../Navigation/Screens/HomeScreen'  
 import {BusinessScreen} from '../Navigation/Screens/BusinessScreen'
  import {FashionScreen} from '../Navigation/Screens/FashionScreen'
  import {HealthScreen} from '../Navigation/Screens/HealthScreen'
@@ -17,7 +17,13 @@ export default function MainStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+         name="Home"
+         component={HomeScreen}
+        options={{title: 'Home' ,headerTitleStyle: { 
+          textAlign:"center", 
+          flex:1 
+      }}}/>
      
       </Stack.Navigator>
     </NavigationContainer>

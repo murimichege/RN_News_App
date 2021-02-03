@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import getTechNews from '../APIs/APIs'
+import {getTechNews} from '../../APIs/API'
 
 function TechScreen() {
     
@@ -32,7 +32,6 @@ function TechScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -49,7 +48,6 @@ function TechScreen() {
                                 {moment(l.publishedAt).fromNow}
                                 </ListItem.Subtitle>
                             </ListItem.Content>   
-                            </Card.Image> 
                         </ListItem>
                         </Card>
                     )

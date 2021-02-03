@@ -8,25 +8,25 @@ export const getBusinessNews = async()=> {
 
 }
 
-export const getWorldNews = () => {
+export const getWorldNews = async() => {
     await axios.get(`${url}/svc/topstories/v2/business.json?api-key=${APIKEY}`)    
 
 }
 
-export const getTechNews = () =>{
+export const getTechNews = async() =>{
     await axios.get(`${url}/svc/topstories/v2/business.json?api-key=${APIKEY}`)    
 }
 
-export const getPoliticsNews = () => {
+export const getPoliticsNews = async() => {
     await axios.get(`${url}/svc/topstories/v2/business.json?api-key=${APIKEY}`)    
 
 }
-export const getHealthNews = () => {
+export const getHealthNews = async() => {
     await axios.get(`${url}/svc/topstories/v2/business.json?api-key=${APIKEY}`)    
 
 }
 
-export const getFashionNews = () => {
+export const getFashionNews = async() => {
     await axios.get(`https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${APIKEY}`)    
 
 }

@@ -2,8 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import axios from 'axios'
-import getFashionNews from '../APIs/APIs'
+import {getFashionNews} from '../../APIs/API'
 
 function FashionScreen() {
     
@@ -37,7 +36,6 @@ function FashionScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -54,7 +52,6 @@ function FashionScreen() {
                                 {moment(l.publishedAt).fromNow}
                                 </ListItem.Subtitle>
                             </ListItem.Content>   
-                            </Card.Image> 
                         </ListItem>
                         </Card>
                     )

@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import getBusinessNews from '../APIs/APIs'
+import {getBusinessNews} from '../../APIs/API'
 
 function BusinessScreen() {
     
@@ -36,7 +36,6 @@ function BusinessScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -53,7 +52,6 @@ function BusinessScreen() {
                                 {moment(l.publishedAt).fromNow}
                                 </ListItem.Subtitle>
                             </ListItem.Content>   
-                            </Card.Image> 
                         </ListItem>
                         </Card>
                     )

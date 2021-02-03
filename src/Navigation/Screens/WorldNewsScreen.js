@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import getWorldNews from '../APIs/APIs'
+import getWorldNews from '../../APIs/API'
 import axios from 'axios'
 function HomeScreen() {
     
@@ -34,7 +34,6 @@ function HomeScreen() {
                     return (
                         <Card key={index}>
                         <ListItem  bottomDivider>
-                        <Card.Image source={require(l.multimedia.url)}>
 
                             <ListItem.Content>
                                 <ListItem.Title>
@@ -51,7 +50,6 @@ function HomeScreen() {
                                 {moment(l.publishedAt).fromNow}
                                 </ListItem.Subtitle>
                             </ListItem.Content>   
-                            </Card.Image> 
                         </ListItem>
                         </Card>
                     )

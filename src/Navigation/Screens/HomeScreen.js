@@ -1,10 +1,12 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {SafeAreaView, Text} from 'react-native'
+
 function HomeScreen() {
     return (
-     <View>
-         
-     </View>
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'
+    }}>
+        <Text>Home Screen</Text>
+      </SafeAreaView>
     )
 }
 
