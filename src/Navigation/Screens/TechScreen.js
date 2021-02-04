@@ -2,8 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
-import {getTechNews} from '../../APIs/API'
-
+import axios from 'axios'
 function TechScreen() {
     
      
@@ -12,8 +11,8 @@ function TechScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const fetchedData = await getTechNews()
-            setData(fetchedData)
+            const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData(); 

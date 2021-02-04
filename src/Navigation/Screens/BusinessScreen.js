@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
+import axios from 'axios'
 import moment from 'moment'
 import {getBusinessNews} from '../../APIs/API'
 
@@ -12,8 +13,8 @@ function BusinessScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const fetchedData = await getBusinessNews()
-            setData(fetchedData)
+            const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/business.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData();

@@ -4,7 +4,8 @@ import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
 import getWorldNews from '../../APIs/API'
 import axios from 'axios'
-function HomeScreen() {
+
+function WorldNewsScreen() {
     
      
     const [data, setData] = useState([])
@@ -12,8 +13,8 @@ function HomeScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const fetchedData = await getWorldNews()
-            setData(fetchedData)
+            const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData();  
@@ -61,7 +62,7 @@ function HomeScreen() {
     )
 }
 
-export default HomeScreen
+export default WorldNewsScreen
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,

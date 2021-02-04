@@ -1,31 +1,56 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 import HomeScreen from '../Navigation/Screens/HomeScreen'  
-import {BusinessScreen} from '../Navigation/Screens/BusinessScreen'
- import {FashionScreen} from '../Navigation/Screens/FashionScreen'
- import {HealthScreen} from '../Navigation/Screens/HealthScreen'
- import {PoliticsScreen} from '../Navigation/Screens/PoliticsScreen'
- import {SplashScreen} from '../Navigation/Screens/SplashScreen'
- import {TechScreen} from '../Navigation/Screens/TechScreen'
- import {WorldNewsScreen} from '../Navigation/Screens/WorldNewsScreen'
+import BusinessScreen from '../Navigation/Screens/BusinessScreen'
+ import FashionScreen from '../Navigation/Screens/FashionScreen'
+ import HealthScreen from '../Navigation/Screens/HealthScreen'
+ import PoliticsScreen from '../Navigation/Screens/PoliticsScreen'
+ import SplashScreen from '../Navigation/Screens/SplashScreen'
+ import TechScreen from '../Navigation/Screens/TechScreen'
+ import WorldNewsScreen from '../Navigation/Screens/WorldNewsScreen'
 
 
-const Stack = createStackNavigator();
+ const Tab = createMaterialTopTabNavigator();
 
 export default function MainStackNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-         name="Home"
-         component={HomeScreen}
-        options={{title: 'Home' ,headerTitleStyle: { 
-          textAlign:"center", 
-          flex:1 
-      }}}/>
-     
-      </Stack.Navigator>
+       <Tab.Navigator
+      initialRouteName="Home"
+      tabBarOptions={{
+        activeTintColor: '#e91e63',
+        labelStyle: { fontSize: 12 },
+        style: { backgroundColor: 'powderblue' },
+      }}
+    >
+      <Tab.Screen
+        name="Featured"
+        component={WorldNewsScreen}
+        options={{ tabBarLabel: 'Featured' }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ tabBarLabel: 'Home' }}
+      />
+        <Tab.Screen
+        name="Tech"
+        component={TechScreen}
+        options={{ tabBarLabel: 'Tech' }}
+      />
+       <Tab.Screen
+        name="Politics"
+        component={PoliticsScreen}
+        options={{ tabBarLabel: 'Politics' }}
+      />
+      <Tab.Screen
+        name="Business"
+        component={BusinessScreen}
+        options={{ tabBarLabel: 'Business' }}
+      />
+    </Tab.Navigator>
     </NavigationContainer>
   );
 }

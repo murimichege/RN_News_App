@@ -1,12 +1,13 @@
 import React from 'react'
-import {SafeAreaView, Text} from 'react-native'
+import {View, Text} from 'react-native'
+import {Card} from 'react-native-elements'
 
 function HomeScreen() {
     return (
-        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'
     }}>
-        <Text>Home Screen</Text>
-      </SafeAreaView>
+    <Text>Home</Text>
+      </View>
     )
 }
 
