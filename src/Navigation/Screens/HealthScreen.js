@@ -3,6 +3,7 @@ import {ScrollView,StyleSheet,Image, ActivityIndicator} from 'react-native'
 import{ListItem, Card} from 'react-native-elements'
 import moment from 'moment'
 import {getHealthNews} from '../../APIs/API'
+import axios from 'axios'
 function HealthScreen() {
     
      
@@ -11,8 +12,8 @@ function HealthScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const fetchedData = await getHealthNews()
-            setData(fetchedData)
+            const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/health.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
+            setData(fetchedData.data)
             setisLoading(false)
         }
         fetchData();

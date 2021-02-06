@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {StyleSheet,View} from 'react-native'
+import { FontAwesome as Icon } from '@expo/vector-icons';
 
 import HomeScreen from '../Navigation/Screens/HomeScreen'  
 import BusinessScreen from '../Navigation/Screens/BusinessScreen'
@@ -10,55 +12,132 @@ import BusinessScreen from '../Navigation/Screens/BusinessScreen'
  import SplashScreen from '../Navigation/Screens/SplashScreen'
  import TechScreen from '../Navigation/Screens/TechScreen'
  import WorldNewsScreen from '../Navigation/Screens/WorldNewsScreen'
+ import { IS_IPHONE_X } from '../utils/index';
 
+import TabBarAdvancedButton from './TabBarAdvancedButton'
+ const Tab =  createBottomTabNavigator();
 
- const Tab = createMaterialTopTabNavigator();
-
-export default function MainStackNavigator() {
+export default function MainStackNavigator({barColor}) {
   return (
     <NavigationContainer>
-       <Tab.Navigator
-      initialRouteName="Home"
+        <Tab.Navigator
+      tabBar={(props) => (
+        <View style={styles.navigatorContainer}>
+          <BottomTabBar
+            {...props}
+          />
+          {IS_IPHONE_X && (
+            <View style={[styles.xFillLine, {
+              backgroundColor: barColor
+            }]}/>
+          )}
+        </View>
+      )}
       tabBarOptions={{
-        activeTintColor: '#e91e63',
-        labelStyle: { fontSize: 12 },
-        style: { backgroundColor: 'powderblue' },
+        showIcon: true,
+        style: styles.navigator,
+        tabStyle: {
+          backgroundColor: barColor
+        }
       }}
     >
+     
       <Tab.Screen
-        name="Featured"
-        component={WorldNewsScreen}
-        options={{ tabBarLabel: 'Featured' }}
-      />
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ tabBarLabel: 'Home' }}
+name="Health"
+component={HealthScreen}
+options={{
+  tabBarIcon: ({ color }) => (
+    <Icon
+      name="gear"
+      size={24}
+      color={color}
+    />
+  )
+}}      
+      
+      
       />
         <Tab.Screen
         name="Tech"
         component={TechScreen}
-        options={{ tabBarLabel: 'Tech' }}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon
+              name="gear"
+              size={24}
+              color={color}
+            />
+          )
+        }}      />
+       <Tab.Screen
+        name="Featured"
+        component={WorldNewsScreen}
+        options={{
+          tabBarButton: (props) => (
+            <TabBarAdvancedButton
+              bgColor={barColor}
+              {...props}
+            />
+          )
+        }}
       />
        <Tab.Screen
         name="Politics"
         component={PoliticsScreen}
-        options={{ tabBarLabel: 'Politics' }}
-      />
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon
+              name="gear"
+              size={24}
+              color={color}
+            />
+          )
+        }}      />
       <Tab.Screen
         name="Business"
         component={BusinessScreen}
-        options={{ tabBarLabel: 'Business' }}
-      />
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon
+              name="gear"
+              size={24}
+              color={color}
+            />
+          )
+        }}      />
     </Tab.Navigator>
     </NavigationContainer>
   );
 }
-/* 
-        <Stack.Screen name="Business" component={BusinessScreen} />
-  <Stack.Screen name="Fashion" component={FashionScreen} />
-        <Stack.Screen name="Health" component={HealthScreen} />
-        <Stack.Screen name="Politics" component={PoliticsScreen} />
-        <Stack.Screen name="Splash" component={SplashScreen} />
-        <Stack.Screen name="Tech" component={TechScreen} />
-        <Stack.Screen name="World" component={WorldNewsScreen} />*/
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  navigatorContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    // SHADOW
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+  },
+  navigator: {
+    borderTopWidth: 0,
+    backgroundColor: 'transparent',
+    elevation: 30
+  },
+  xFillLine: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 34
+  }
+});
