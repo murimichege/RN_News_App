@@ -12,7 +12,7 @@ function FashionScreen() {
 
     useEffect(() => {
         const fetchData = async() => {
-            const fetchedData = await getFashionNews()
+            const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/fashion.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
             setData(fetchedData)
             setisLoading(false)
         }

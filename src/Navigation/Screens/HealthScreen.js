@@ -14,6 +14,7 @@ function HealthScreen() {
         const fetchData = async() => {
             const fetchedData = await axios.get('https://api.nytimes.com/svc/topstories/v2/health.json?api-key=MXgFv0iccABKrdUHqwR8LpdNZMoUF7cI')
             setData(fetchedData.data)
+            console.log(fetchedData)
             setisLoading(false)
         }
         fetchData();
@@ -41,16 +42,16 @@ function HealthScreen() {
                                 <ListItem.Title>
                                     {l.title}
                                 </ListItem.Title>
+                                <Card.Image source={l.multimedia.url}>
+
 
                                 <ListItem.Subtitle>
                                     {l.abstract}         
                                 </ListItem.Subtitle>
                                 <ListItem.Subtitle>
-                                {moment(l.published_date).fromNow}
+                                {l.published_date}
                                 </ListItem.Subtitle>
-                                <ListItem.Subtitle>
-                                {moment(l.publishedAt).fromNow}
-                                </ListItem.Subtitle>
+                                </Card.Image>
                             </ListItem.Content>   
                         </ListItem>
                         </Card>
