@@ -42,9 +42,10 @@ function HealthScreen() {
                                 <ListItem.Title>
                                     {l.title}
                                 </ListItem.Title>
-                                <Card.Image source={l.multimedia.url}>
-
-
+                                {
+                                    l.multimedia.map((k, index) => (
+                                        <Card.Image source={{uri: k.url}} style={{width: 200, marginLeft:0, height: 200}}    resizeMode={'cover'} // cover or contain its upto you view look
+>
                                 <ListItem.Subtitle>
                                     {l.abstract}         
                                 </ListItem.Subtitle>
@@ -52,6 +53,10 @@ function HealthScreen() {
                                 {l.published_date}
                                 </ListItem.Subtitle>
                                 </Card.Image>
+
+                                    ))
+                                }
+                                
                             </ListItem.Content>   
                         </ListItem>
                         </Card>

@@ -22,8 +22,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-actions-sheet": "^0.4.2",
     "react-native-cards": "^1.1.4",
+    "react-native-cardview": "^2.0.5",
     "react-native-elements": "^3.0.0-alpha.1",
+    "react-native-flatlist-slider": "^1.0.5",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-paper": "^4.7.1",
     "react-native-reanimated": "~1.13.0",
@@ -33,6 +36,7 @@
     "react-native-tab-view": "^2.15.2",
     "react-native-vector-icons": "^8.0.0",
     "react-native-web": "~0.13.12",
+    "react-native-webview": "10.7.0",
     "react-navigation-tabs": "^2.10.1"
   },
   "devDependencies": {

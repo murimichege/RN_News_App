@@ -10,15 +10,17 @@ export default class AddButton extends React.Component {
         Animated.sequence([
             Animated.timing(this.buttonSize, {
                 toValue: 0.95,
-                duration: 200
+                duration: 200,
+
             }),
             Animated.timing(this.buttonSize, {
-                toValue: 1
+                toValue: 1,
+
             }),
             Animated.timing(this.mode, {
-                toValue: this.mode._value === 0 ? 1 : 0
+                toValue: this.mode._value === 0 ? 1 : 0,
+                 useNativeDriver: true // <-- Add this
             }),
-            { useNativeDriver: true } // Add this line
 
         ]).start();
     };
